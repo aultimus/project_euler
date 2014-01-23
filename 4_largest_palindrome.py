@@ -4,23 +4,17 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
 def isPalindrome(s):
-    l = len(s)
-    p1 = s[:l/2]
-    p2 = s[l/2:]
-    for i in xrange(l/2):
+    for i in xrange(len(s)/2):
         endInd = i + 1
-        if p1[i] != p2[-endInd]:
+        if s[i] != s[-endInd]:
             return False
     return True
-
 
 vals = []
 for i in xrange(100, 1000):
     for j in xrange(100, 1000):
         n = i * j
         s = str(n)
-        if (len(s) % 2) == 0:
-            if isPalindrome(s):
-                vals.append(n)
-
+        if isPalindrome(s):
+            vals.append(n)
 print max(vals)
