@@ -15,24 +15,11 @@
 
 # Add actual integer vals for readability rather than using indexes
 # [number, marked]
-n = [[i, 1] for i in range(2,1000000)] # suitably large no here
 
-def mark(x):
-    for i in xrange((x-1)*2,len(n),x):
-        n[i][1] = 0
+from utils import genPrimes
 
-count = 1 # to compensate for already starting with 2
-p = 2
-marked = False
-for e in n:
-    if not marked:
-        mark(p)
-        count +=1
-        marked = True
-    if e[0] > p and e[1]:
-        p = e[0]
-        marked = False
-        if count == 10001:
-            print "success"
-            print e[0]
-            break
+count = 0
+for prime in genPrimes(1000000):
+    count += 1
+    if count == 10001:
+        print prime
