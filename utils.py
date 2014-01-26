@@ -1,6 +1,6 @@
 
 # Sieve of Eratosthenes
-def genPrimes(c):
+def sieveOfEratosthenes(c):
     """
     Generates prime numbers using sieve of Eratosthenes algorithm
     1. Create a list of consecutive integers from 2 through
@@ -16,7 +16,7 @@ def genPrimes(c):
     arg c: upper limit on prime numbers you want to generate
     """
     def mark(x):
-        for i in xrange((x-1)*2,len(n),x):
+        for i in xrange(x*2,len(n),x):
             n[i][1] = 0
     # Add actual integer vals for readability rather than using indexes
     # [number, marked]
@@ -31,3 +31,18 @@ def genPrimes(c):
         if e[0] > p and e[1]:
             p = e[0]
             marked = False
+
+def isPrime(n):
+    for i in xrange(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+def trialDivision(n, printAsWeGo=True):
+    primeFactors = []
+    for i in xrange(2, n):
+        if n % i == 0 and isPrime(i):
+            primeFactors.append(i)
+            if printAsWeGo:
+                print i
+    return primeFactors
