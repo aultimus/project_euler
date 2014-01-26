@@ -7,4 +7,5 @@ from utils import trialDivision
 
 num = 600851475143
 
-print max(trialDivision(num))
+for prime in trialDivision(num):
+    print prime

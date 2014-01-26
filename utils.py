@@ -38,11 +38,7 @@ def isPrime(n):
             return False
     return True
 
-def trialDivision(n, printAsWeGo=True):
-    primeFactors = []
+def trialDivision(n):
     for i in xrange(2, n):
         if n % i == 0 and isPrime(i):
-            primeFactors.append(i)
-            if printAsWeGo:
-                print i
-    return primeFactors
+            yield i
