@@ -33,6 +33,6 @@ if __name__ == "__main__":
     count = 0
     primes = [p for p in sieveOfEratosthenes(1000000)]
     for p in primes:
-        if p and all(r in primes for r in getRotations(p)):
+        if all(r in primes for r in getRotations(p)):
             count += 1
     print count
