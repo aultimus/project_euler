@@ -50,6 +50,33 @@ def trialDivision(n):
         if n % i == 0 and isPrime(i):
             yield i
 
+def gcd(x, y):
+    """
+    Greatest Common Divisor func, implementation of Euclid's algorithm
+
+    >>> gcd(48,18)
+    6
+    >>> gcd(13, 35)
+    1
+    >>> gcd(27, 90)
+    9
+    """
+    x, y = max(x,y), min(x,y)
+    while y:
+        x,y = y, x % y
+    return x
+
+def pollardsRho(n):
+    f = lambda x: (x**2 -1) % n
+    x = random.randint(1, n-1)
+    y = random.randint(1, n-1)
+    d = 1
+    while d == 1:
+        x = f(x)
+        y = f(f(y))
+        d = gcd(abs(x-y), n)
+    return d
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
