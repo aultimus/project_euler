@@ -14,31 +14,41 @@ def sieveOfEratosthenes(c):
         number (which is the next prime), and repeat from step 3.
 
     arg c: upper limit on prime numbers you want to generate
+
+    >>> r = [p for p in sieveOfEratosthenes(114)]
+    >>> r == [2, 3, 5,7, 11, 13, 17, 19, 23, 29,
+    ... 31, 37, 41, 43, 47,  53,  59,  61,  67,  71,
+    ... 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
+    True
     """
     def mark(x):
         for i in xrange(x*2,len(n),x):
-            n[i][1] = 0
-    # Add actual integer vals for readability rather than using indexes
-    # [number, marked]
-    n = [[i, 1] for i in range(2, c)]
-    p = 2
+            n[i] = 0
+    n = [1 for i in xrange(c)]
+    p = 0
     marked = False
-    for e in n:
-        if not marked:
+    for i in xrange(2, c):
+      if n[i] and i > p:
+            p = i
             yield p
             mark(p)
-            marked = True
-        if e[0] > p and e[1]:
-            p = e[0]
-            marked = False
 
-def isPrime(n):
+def isPrime(n, cache=[]):
+    """ brute force prime checker """
+    if n in cache:
+        return True
     for i in xrange(2, n):
         if n % i == 0:
             return False
+    cache.append(n)
     return True
 
 def trialDivision(n):
+    """ brute force prime factor finder """
     for i in xrange(2, n):
         if n % i == 0 and isPrime(i):
             yield i
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
