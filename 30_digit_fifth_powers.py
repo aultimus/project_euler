@@ -20,5 +20,4 @@ for i in xrange(2, 1000000):
     s = sum([int(d) ** 5 for  d in digits])
     if s == i:
         l.append(i)
-        print l
-        print sum(l)
+print sum(l)

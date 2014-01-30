@@ -12,5 +12,4 @@ for i in xrange(30, 1000000):
     s = sum(math.factorial(int(d)) for d in digits)
     if i == s:
         l.append(i)
-        print l
-        print sum(l)
+print sum(l)
