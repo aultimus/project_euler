@@ -1,3 +1,4 @@
+from array import array
 
 # Sieve of Eratosthenes
 def sieveOfEratosthenes(c):
@@ -24,7 +25,7 @@ def sieveOfEratosthenes(c):
     def mark(x):
         for i in xrange(x*2,len(n),x):
             n[i] = 0
-    n = [1 for i in xrange(c)]
+    n = array('B', [1 for i in xrange(c)])
     p = 0
     marked = False
     for i in xrange(2, c):
