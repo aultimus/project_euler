@@ -77,6 +77,18 @@ def pollardsRho(n):
         d = gcd(abs(x-y), n)
     return d
 
+def factorise(n):
+    """ Return list of all factors of n
+    >>> factorise(1)
+    set([1])
+    >>> factorise(21)
+    set([1, 3, 21, 7])
+    >>> factorise(28)
+    set([1, 2, 4, 7, 14, 28])
+    """
+    return set(reduce(list.__add__,
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()

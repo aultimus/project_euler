@@ -18,19 +18,7 @@
 # five hundred divisors?
 import doctest
 import math
-
-
-def factorise(n):
-    """ Return list of all factors of n
-    >>> factorise(1)
-    set([1])
-    >>> factorise(21)
-    set([1, 3, 21, 7])
-    >>> factorise(28)
-    set([1, 2, 4, 7, 14, 28])
-    """
-    return set(reduce(list.__add__,
-                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+import utils
 
 def gen_triangle_number(n, cache={}):
     """ generate the n'th triangle number
@@ -62,7 +50,7 @@ doctest.testmod()
 
 for i in xrange(1, 1000000):
     t = gen_triangle_number(i)
-    f = factorise(t)
+    f = utils.factorise(t)
     if not (i % 100):
         print i, len(f) # Progress display
     if len(f) > 500:
