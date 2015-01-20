@@ -13,24 +13,6 @@
 import doctest
 import utils
 
-def proper_divisors(n):
-    """
-    >>> proper_divisors(220)
-    [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110]
-    >>> proper_divisors(284)
-    [1, 2, 4, 71, 142]
-    """
-    return [i for i in xrange(1, (n/2)+1) if not n % i]
-
-def sum_of_proper_divisors(n):
-    """
-    >>> sum_of_proper_divisors(220)
-    284
-    >>> sum_of_proper_divisors(284)
-    220
-    """
-    return sum(proper_divisors(n))
-
 def are_amicable(a, b):
     """
     >>> are_amicable(220, 284)
@@ -38,7 +20,7 @@ def are_amicable(a, b):
     """
     if a == b:
         return False
-    return (sum_of_proper_divisors(a) == b and sum_of_proper_divisors(b) == a)
+    return (utils.sum_of_proper_divisors(a) == b and utils.sum_of_proper_divisors(b) == a)
 
 doctest.testmod()
 
@@ -47,7 +29,7 @@ amicable_total = 0
 for a in xrange(1, 10001):
     if not a % 500:
         print a
-    b = sum_of_proper_divisors(a) # doing this calc twice, could cache or pass in
+    b = utils.sum_of_proper_divisors(a) # doing this calc twice, could cache or pass in
     if are_amicable(a,b):
         l.add(a)
         l.add(b)

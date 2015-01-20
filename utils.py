@@ -89,6 +89,25 @@ def factorise(n):
     return set(reduce(list.__add__,
                 ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
+def proper_divisors(n):
+    """
+    >>> proper_divisors(220)
+    [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110]
+    >>> proper_divisors(284)
+    [1, 2, 4, 71, 142]
+    """
+    return [i for i in xrange(1, (n/2)+1) if not n % i]
+
+def sum_of_proper_divisors(n):
+    """
+    >>> sum_of_proper_divisors(220)
+    284
+    >>> sum_of_proper_divisors(284)
+    220
+    """
+    return sum(proper_divisors(n))
+
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
