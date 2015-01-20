@@ -19,16 +19,18 @@
 import doctest
 import math
 
+
 def factorise(n):
-    """ Return list of all factors of n.
+    """ Return list of all factors of n
     >>> factorise(1)
-    [1]
+    set([1])
     >>> factorise(21)
-    [1, 3, 7, 21]
+    set([1, 3, 21, 7])
     >>> factorise(28)
-    [1, 2, 4, 7, 14, 28]
+    set([1, 2, 4, 7, 14, 28])
     """
-    return [i for i in xrange(1, n+1) if not n % i ]
+    return set(reduce(list.__add__,
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
 def gen_triangle_number(n, cache={}):
     """ generate the n'th triangle number
