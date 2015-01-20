@@ -16,10 +16,8 @@
 # We can see that 28 is the first triangle number to have over five divisors.
 # What is the value of the first triangle number to have over
 # five hundred divisors?
-#import numpy as np
 import doctest
 import math
-#from utils import numFactors
 
 def factorise(n):
     """ Return list of all factors of n.
