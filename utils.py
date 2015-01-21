@@ -107,6 +107,22 @@ def sum_of_proper_divisors(n):
     """
     return sum(proper_divisors(n))
 
+def reverse_int(x):
+    """
+    >>> reverse(47)
+    74
+    """
+    return int(str(x)[::-1])
+
+def is_palindrome(x):
+    """
+    >>> is_palindrome(7337)
+    True
+    >>> is_palindrome(13441)
+    False
+    """
+    return str(x) == str(x)[::-1]
+
 
 if __name__ == "__main__":
     import doctest

@@ -29,28 +29,14 @@
 # NOTE: Wording was modified slightly on 24 April 2007 to emphasise the
 # theoretical nature of Lychrel numbers.
 
-def reverse(x):
-    """
-    >>> reverse(47)
-    74
-    """
-    return int(str(x)[::-1])
+import utils
 
 def reverse_and_add(x):
     """
     >>> reverse_and_add(47)
     121
     """
-    return x + reverse(x)
-
-def is_palindrome(x):
-    """
-    >>> is_palindrome(7337)
-    True
-    >>> is_palindrome(13441)
-    False
-    """
-    return str(x) == str(x)[::-1]
+    return x + utils.reverse_int(x)
 
 # examine 1-> 10,000
 lychrels = range(1,10001)
@@ -58,7 +44,7 @@ for i in xrange(1,10001):
     # Fifty iterations per number to try and prove it is non-lychrel
     r = reverse_and_add(i)
     for j in xrange(0,50):
-        if is_palindrome(r):
+        if utils.is_palindrome(r):
             # print "%s is a palindrome of %s on iteration %d" % (r, i, j)
             lychrels.remove(i)
             break
