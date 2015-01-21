@@ -29,7 +29,9 @@
 # NOTE: Wording was modified slightly on 24 April 2007 to emphasise the
 # theoretical nature of Lychrel numbers.
 
+import doctest
 import utils
+
 
 def reverse_and_add(x):
     """
@@ -37,6 +39,9 @@ def reverse_and_add(x):
     121
     """
     return x + utils.reverse_int(x)
+
+
+doctest.testmod()
 
 # examine 1-> 10,000
 lychrels = range(1,10001)
@@ -50,3 +55,4 @@ for i in xrange(1,10001):
             break
         r = reverse_and_add(r)
 print len(lychrels)
+
