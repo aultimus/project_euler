@@ -198,17 +198,16 @@ class Hand(object):
 
     def is_royal_flush(self):
         """
-        >>> Hand(["TH", "JH", "QH", "KH", "AH"]).is_royal_flush()
+        >>> Hand(["TH", "JH", "QH", "KH", "AH"]).is_royal_flush() == Card.ACE
         True
         >>> Hand(["TH", "JH", "QD", "KH", "AH"]).is_royal_flush()
-        False
+        0
         """
-        if not self.same_suit():
-            return False
         ranks = self.get_ranks()
-        if all([Card.TEN in ranks, Card.JACK in ranks, Card.QUEEN in ranks,
-                Card.KING in ranks, Card.ACE in ranks]):
+        if self.same_suit() and all([Card.TEN in ranks, Card.JACK in ranks,
+            Card.QUEEN in ranks, Card.KING in ranks, Card.ACE in ranks]):
             return Card.ACE  # for consistency
+        return 0
 
     def is_straight_flush(self):
         """
