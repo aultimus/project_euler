@@ -109,7 +109,7 @@ def sum_of_proper_divisors(n):
 
 def reverse_int(x):
     """
-    >>> reverse(47)
+    >>> reverse_int(47)
     74
     """
     return int(str(x)[::-1])
