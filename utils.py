@@ -34,14 +34,14 @@ def sieveOfEratosthenes(c):
             yield p
             mark(p)
 
-def isPrime(n, cache=[]):
+def isPrime(n, cache=set()):
     """ brute force prime checker """
     if n in cache:
         return True
     for i in xrange(2, n):
         if n % i == 0:
             return False
-    cache.append(n)
+    cache.add(n)
     return True
 
 def trialDivision(n):

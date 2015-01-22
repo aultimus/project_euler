@@ -24,7 +24,7 @@ start = time.time()
 
 limit = 200000
 num_prime_facs = 4
-primes = [p for p in utils.sieveOfEratosthenes(limit)]
+primes = set([p for p in utils.sieveOfEratosthenes(limit)])
 count = 0
 
 for i in xrange(1, limit):
