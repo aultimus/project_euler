@@ -4,7 +4,7 @@
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
 # Cheaper than modulus? Probably, that would be 2000 moduluses!
-l = [i for i in xrange(0,1000,3)]
-l.extend([i for i in xrange(0,1000,5)])
+l = [i for i in xrange(0, 1000, 3)]
+l.extend([i for i in xrange(0, 1000, 5)])
 s = set(l)
 print sum(s)

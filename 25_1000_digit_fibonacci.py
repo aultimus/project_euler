@@ -24,11 +24,11 @@
 
 # Recursive fibonacci is going to give us a stack overflow, use iterative
 x, y = 1, 1
-n = x+y
+n = x + y
 count = 2
 while len(str(n)) < 1000:
     n = x + y
-    x,y = y, n
-    count +=1
+    x, y = y, n
+    count += 1
 
 print count

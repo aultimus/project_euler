@@ -7,6 +7,7 @@
 
 import doctest
 
+
 def make_digits_list(x):
     """
     >>> make_digits_list(54321)
@@ -21,12 +22,12 @@ doctest.testmod()
 
 def has_permuted_multiples(x):
     digits = make_digits_list(x)
-    for m in [2,3,4,5,6]:
-        if make_digits_list(x*m) != digits:
+    for m in [2, 3, 4, 5, 6]:
+        if make_digits_list(x * m) != digits:
             return False
     return True
 
-for x in xrange(1,10000000000):
+for x in xrange(1, 10000000000):
     if has_permuted_multiples(x):
         print x
         break

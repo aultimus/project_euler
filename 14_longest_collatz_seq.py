@@ -15,19 +15,20 @@
 #
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
+
 def collatz(n):
     """ Returns number of values in collatz sequence starting at arg n"""
     count = 1
     while n != 1:
         count += 1
-        if n % 2 == 0: # even
+        if n % 2 == 0:  # even
             n = n / 2
         else:
             n = 3 * n + 1
     return count
 
-m = 0 # max collatz chain size so far
-n = 0 # start of max collatz chain so far
+m = 0  # max collatz chain size so far
+n = 0  # start of max collatz chain so far
 for i in xrange(1, 1000001):
     t = collatz(i)
     if t > m:

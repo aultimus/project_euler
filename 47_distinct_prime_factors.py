@@ -1,6 +1,9 @@
 # http://projecteuler.net/problem=47
 
-import doctest, time, utils
+import doctest
+import time
+import utils
+
 
 def get_prime_factors_list(x, primes):
     """ Return list of prime factors of x given list of primes
@@ -32,11 +35,11 @@ for i in xrange(1, limit):
         print i
     p_facs = get_prime_factors_list(i, primes)
     if len(p_facs) >= num_prime_facs:
-        count+=1
+        count += 1
     else:
         count = 0
 
     if count == num_prime_facs:
-        print "result: %d" % (i - (num_prime_facs-1))
+        print "result: %d" % (i - (num_prime_facs - 1))
         break
 print "wall-clock time taken: %d" % (time.time() - start)

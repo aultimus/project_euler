@@ -17,7 +17,7 @@
 l = []
 for i in xrange(2, 1000000):
     digits = list(str(i))
-    s = sum([int(d) ** 5 for  d in digits])
+    s = sum([int(d) ** 5 for d in digits])
     if s == i:
         l.append(i)
 print sum(l)

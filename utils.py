@@ -1,6 +1,8 @@
 import array
 
 # Sieve of Eratosthenes
+
+
 def sieveOfEratosthenes(c):
     """
     Generates prime numbers using sieve of Eratosthenes algorithm
@@ -23,16 +25,17 @@ def sieveOfEratosthenes(c):
     True
     """
     def mark(x):
-        for i in xrange(x*2,len(n),x):
+        for i in xrange(x * 2, len(n), x):
             n[i] = 0
     n = array.array('B', [1 for i in xrange(c)])
     p = 0
     marked = False
     for i in xrange(2, c):
-      if n[i] and i > p:
+        if n[i] and i > p:
             p = i
             yield p
             mark(p)
+
 
 def isPrime(n, cache=set()):
     """ brute force prime checker """
@@ -44,11 +47,13 @@ def isPrime(n, cache=set()):
     cache.add(n)
     return True
 
+
 def trialDivision(n):
     """ brute force prime factor finder """
     for i in xrange(2, n):
         if n % i == 0 and isPrime(i):
             yield i
+
 
 def gcd(x, y):
     """
@@ -61,21 +66,23 @@ def gcd(x, y):
     >>> gcd(27, 90)
     9
     """
-    x, y = max(x,y), min(x,y)
+    x, y = max(x, y), min(x, y)
     while y:
-        x,y = y, x % y
+        x, y = y, x % y
     return x
 
+
 def pollardsRho(n):
-    f = lambda x: (x**2 -1) % n
-    x = random.randint(1, n-1)
-    y = random.randint(1, n-1)
+    f = lambda x: (x ** 2 - 1) % n
+    x = random.randint(1, n - 1)
+    y = random.randint(1, n - 1)
     d = 1
     while d == 1:
         x = f(x)
         y = f(f(y))
-        d = gcd(abs(x-y), n)
+        d = gcd(abs(x - y), n)
     return d
+
 
 def factorise(n):
     """ Return list of all factors of n
@@ -87,7 +94,8 @@ def factorise(n):
     set([1, 2, 4, 7, 14, 28])
     """
     return set(reduce(list.__add__,
-                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+                      ([i, n // i] for i in range(1, int(n ** 0.5) + 1) if n % i == 0)))
+
 
 def proper_divisors(n):
     """
@@ -96,7 +104,8 @@ def proper_divisors(n):
     >>> proper_divisors(284)
     [1, 2, 4, 71, 142]
     """
-    return [i for i in xrange(1, (n/2)+1) if not n % i]
+    return [i for i in xrange(1, (n / 2) + 1) if not n % i]
+
 
 def sum_of_proper_divisors(n):
     """
@@ -107,12 +116,14 @@ def sum_of_proper_divisors(n):
     """
     return sum(proper_divisors(n))
 
+
 def reverse_int(x):
     """
     >>> reverse_int(47)
     74
     """
     return int(str(x)[::-1])
+
 
 def is_palindrome(x):
     """

@@ -10,12 +10,12 @@
 
 # sum of squares
 n = 0
-for i in xrange(0,101):
+for i in xrange(0, 101):
     n += i ** 2
 
 # square of sum
 m = 0
-for i in xrange(1,101):
+for i in xrange(1, 101):
     m += i
 m = m ** 2
 

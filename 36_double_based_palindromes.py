@@ -5,7 +5,9 @@
 # (Please note that the palindromic number, in either base, may not include
 # leading zeros.)
 
-import doctest, utils
+import doctest
+import utils
+
 
 def is_palindrome_in_binary(x):
     """
@@ -13,8 +15,9 @@ def is_palindrome_in_binary(x):
     True
     """
     b = "{0:b}".format(x)
-     # extra work in int conversion but is necessary to use utility function
+    # extra work in int conversion but is necessary to use utility function
     return utils.is_palindrome(int(b))
+
 
 def is_palindrome_in_decimal(x):
     """
@@ -22,6 +25,7 @@ def is_palindrome_in_decimal(x):
     True
     """
     return utils.is_palindrome(x)
+
 
 def is_palindrome_in_dec_and_bin(x):
     """
@@ -32,4 +36,4 @@ def is_palindrome_in_dec_and_bin(x):
 
 doctest.testmod()
 
-print sum([i for i in xrange(1,1000000) if is_palindrome_in_dec_and_bin(i)])
+print sum([i for i in xrange(1, 1000000) if is_palindrome_in_dec_and_bin(i)])

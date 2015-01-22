@@ -7,6 +7,7 @@
 
 total = 0
 
+
 def fib(x, y):
     global total
     n = x + y
@@ -16,5 +17,5 @@ def fib(x, y):
         fib(y, n)
 
 total += 2
-fib(1,2)
+fib(1, 2)
 print total

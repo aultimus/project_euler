@@ -9,6 +9,7 @@
 
 from utils import sieveOfEratosthenes
 
+
 def getRotations(n):
     """
     >>> r = getRotations(197)
@@ -23,7 +24,7 @@ def getRotations(n):
     digits = str(n)
     rots = set()
     for i in xrange(1, len(digits)):
-        digits = digits[-1:]+digits[:-1]
+        digits = digits[-1:] + digits[:-1]
         rots.add(int(digits[:]))
     return rots
 

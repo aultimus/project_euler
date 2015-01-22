@@ -66,25 +66,24 @@
 # How many hands does Player 1 win?
 
 
-
-
 import doctest
+
 
 class Card(object):
     # Rank vals represent actual card rank values
-    TWO         = 2
-    THREE       = 3
-    FOUR        = 4
-    FIVE        = 5
-    SIX         = 6
-    SEVEN       = 7
-    EIGHT       = 8
-    NINE        = 9
-    TEN         = 10
-    JACK        = 11
-    QUEEN       = 12
-    KING        = 13
-    ACE         = 14
+    TWO     = 2
+    THREE   = 3
+    FOUR    = 4
+    FIVE    = 5
+    SIX     = 6
+    SEVEN   = 7
+    EIGHT   = 8
+    NINE    = 9
+    TEN     = 10
+    JACK    = 11
+    QUEEN   = 12
+    KING    = 13
+    ACE     = 14
 
     # arbitrary enum vals
     SPADES      = 20
@@ -102,8 +101,10 @@ class Card(object):
     def __cmp__(self, other):
         return self.__dict__ == other.__dict__
 
+
 def is_royal_flush(hand):
     pass
+
 
 class Hand(object):
     # Ordered enum
@@ -135,7 +136,7 @@ class Hand(object):
         if v:
             return Hand.FOUR_OF_A_KIND, v
 
-        v  = self.is_full_house()
+        v = self.is_full_house()
         if v:
             return Hand.FULL_HOUSE, v
 
@@ -147,7 +148,7 @@ class Hand(object):
         if v:
             return Hand.STRAIGHT, v
 
-        v =  self.is_three_of_a_kind()
+        v = self.is_three_of_a_kind()
         if v:
             return Hand.THREE_OF_A_KIND, v
 
@@ -193,7 +194,7 @@ class Hand(object):
         else:
             return 0
 
-    is_flush = same_suit # Aliases
+    is_flush = same_suit  # Aliases
 
     def is_royal_flush(self):
         """
@@ -206,8 +207,8 @@ class Hand(object):
             return False
         ranks = self.get_ranks()
         if all([Card.TEN in ranks, Card.JACK in ranks, Card.QUEEN in ranks,
-            Card.KING in ranks, Card.ACE in ranks]):
-            return Card.ACE # for consistency
+                Card.KING in ranks, Card.ACE in ranks]):
+            return Card.ACE  # for consistency
 
     def is_straight_flush(self):
         """
@@ -233,12 +234,13 @@ class Hand(object):
         """
         r = self.get_ranks()
         r.sort()
-        if (r[0]+1 == r[1] and r[1]+1 == r[2] and r[2] + 1 == r[3] and r[3]+1 == r[4]):
+        if (r[0] + 1 == r[1] and r[1] + 1 == r[2]
+                and r[2] + 1 == r[3] and r[3] + 1 == r[4]):
             return r[-1]
         else:
             return 0
 
-    is_straight = have_a_run # aliases
+    is_straight = have_a_run  # aliases
 
     def is_four_of_a_kind(self):
         """
@@ -262,7 +264,7 @@ class Hand(object):
         >>> Hand(["KD","KH","JS","JC","KC"]).is_full_house() == [Card.KING, Card.JACK]
         True
         """
-        vals = [0,0]
+        vals = [0, 0]
         ranks = self.get_ranks()
         for r in ranks:
             if ranks.count(r) >= 3:
@@ -285,7 +287,7 @@ class Hand(object):
         """
         ranks = self.get_ranks()
         for r in ranks:
-            if ranks.count(r) >=3:
+            if ranks.count(r) >= 3:
                 return r
         return 0
 
@@ -301,7 +303,7 @@ class Hand(object):
         pair_vals = set()
         ranks = self.get_ranks()
         for r in ranks:
-            if ranks.count(r) >=2:
+            if ranks.count(r) >= 2:
                 pair_vals.add(r)
         if len(pair_vals) >= 2:
             return pair_vals
@@ -319,7 +321,7 @@ class Hand(object):
         """
         ranks = self.get_ranks()
         for r in ranks:
-            if ranks.count(r) >=2:
+            if ranks.count(r) >= 2:
                 return r
         return 0
 
@@ -335,23 +337,28 @@ class Hand(object):
         return max(self.get_ranks())
 
 
-suits = (("H", Card.HEARTS), ("C", Card.CLUBS), ("D", Card.DIAMONDS), ("S", Card.SPADES))
-ranks = (("2", Card.TWO), ( "3", Card.THREE), ( "4", Card.FOUR), ( "5", Card.FIVE), (
-"6", Card.SIX), ( "7", Card.SEVEN), ( "8", Card.EIGHT), ( "9", Card.NINE), ( "T", Card.TEN), (
-"J", Card.JACK), ( "Q", Card.QUEEN), ( "K", Card.KING), ("A", Card.ACE))
+suits = (("H", Card.HEARTS), ("C", Card.CLUBS),
+         ("D", Card.DIAMONDS), ("S", Card.SPADES))
+ranks = (("2", Card.TWO), ("3", Card.THREE), ("4", Card.FOUR),
+         ("5", Card.FIVE), ("6", Card.SIX), ("7", Card.SEVEN),
+         ("8", Card.EIGHT), ("9", Card.NINE), ("T", Card.TEN),
+         ("J", Card.JACK), ("Q", Card.QUEEN), ("K", Card.KING),
+         ("A", Card.ACE))
 
 suit_map    = dict(suits)
-suit_repr   = dict((y,x) for x,y in suits)
+suit_repr   = dict((y, x) for x, y in suits)
 
 rank_map    = dict(ranks)
 rank_repr   = dict((y, x) for x, y in ranks)
 
+
 class UnimplementedException(Exception):
     pass
 
+
 def p1_wins(i):
     print "p1 wins"
-    return i+1
+    return i + 1
 
 doctest.testmod()
 
@@ -371,8 +378,9 @@ for game in games:
     elif p1_hand_value < p2_hand_value:
         print "p2 wins"
     else:
-        # we have equal hand types, check our aux info for more info on hand value
-        # This tells us if we have a pair of eights or a pair of aces for example
+        # we have equal hand types, check our aux info for more info on hand
+        # value. This tells us if we have a pair of eights or a pair of aces
+        # for example
         if p1_aux_val > p2_aux_val:
             p1_win_count = p1_wins(p1_win_count)
         elif p1_aux_val < p2_aux_val:

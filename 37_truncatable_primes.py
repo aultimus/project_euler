@@ -11,6 +11,7 @@
 
 from utils import sieveOfEratosthenes
 
+
 def getTruncations(n):
     """
     >>> r = getTruncations(3797)

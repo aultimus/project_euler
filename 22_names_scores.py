@@ -11,7 +11,8 @@
 #
 # What is the total of all the name scores in the file?
 
-alphaStart = ord("A")-1
+alphaStart = ord("A") - 1
+
 
 def score(s, pos):
     return sum([ord(c) - alphaStart for c in s]) * pos
@@ -19,4 +20,4 @@ def score(s, pos):
 nameData = open("names.txt").readline().split(",")
 names = sorted([name.strip('"') for name in nameData])
 
-print sum([score(name, i+1) for i, name in enumerate(names)])
+print sum([score(name, i + 1) for i, name in enumerate(names)])

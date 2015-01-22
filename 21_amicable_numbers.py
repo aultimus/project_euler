@@ -4,7 +4,7 @@
 # If d(a) = b and d(b) = a, where a != b, then a and b are an amicable pair
 # and each of a and b are called amicable numbers.
 #
-#For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44,
+# For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44,
 # 55 and 110; therefore d(220) = 284.
 # The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
 #
@@ -12,6 +12,7 @@
 
 import doctest
 import utils
+
 
 def are_amicable(a, b):
     """
@@ -29,10 +30,10 @@ amicable_total = 0
 for a in xrange(1, 10001):
     if not a % 500:
         print a
-    b = utils.sum_of_proper_divisors(a) # doing this calc twice, could cache or pass in
-    if are_amicable(a,b):
+    # doing this calc twice, could cache or pass in
+    b = utils.sum_of_proper_divisors(a)
+    if are_amicable(a, b):
         l.add(a)
         l.add(b)
 print l
 print "result", sum(l)
-

@@ -4,8 +4,8 @@
 # What is the smallest positive number that is evenly divisible by all of the
 # numbers from 1 to 20?
 
-for i in xrange(1,1000000000):
-    for j in xrange(1,21):
+for i in xrange(1, 1000000000):
+    for j in xrange(1, 21):
         if i % j:
             break
         if j == 20:
