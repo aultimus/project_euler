@@ -7,33 +7,32 @@
 #
 # How many circular primes are there below one million?
 
-from utils import sieveOfEratosthenes
+import utils
 
 
-def getRotations(n):
+def get_rotations(n):
     """
-    >>> r = getRotations(197)
+    >>> r = get_rotations(197)
     >>> r == {971, 719}
     True
-    >>> r = getRotations(15)
+    >>> r = get_rotations(15)
     >>> r == {51}
     True
     """
-    if n < 10:
-        return set()
-    digits = str(n)
     rots = set()
-    for i in xrange(1, len(digits)):
-        digits = digits[-1:] + digits[:-1]
-        rots.add(int(digits[:]))
+    if n >= 10:
+        digits = str(n)
+        for i in xrange(1, len(digits)):
+            digits = digits[-1:] + digits[:-1]
+            rots.add(int(digits[:]))
     return rots
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
     count = 0
-    primes = [p for p in sieveOfEratosthenes(1000000)]
+    primes = [p for p in utils.sieveOfEratosthenes(1000000)]
     for p in primes:
-        if all(r in primes for r in getRotations(p)):
+        if all(r in primes for r in get_rotations(p)):
             count += 1
     print count
