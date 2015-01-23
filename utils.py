@@ -136,12 +136,16 @@ def is_palindrome(x):
 
 def get_rotations(n):
     """
-    >>> r = get_rotations(197)
-    >>> r == {971, 719}
-    True
-    >>> r = get_rotations(15)
-    >>> r == {51}
-    True
+    Returns a set of integer permutations on int n.
+    Doesn't currently handle negative numbers
+    >>> get_rotations(197)
+    set([971, 719])
+    >>> get_rotations(15)
+    set([51])
+    >>> get_rotations(1234)
+    set([4123, 3412, 2341])
+    >>> get_rotations(10)
+    set([1])
     """
     rots = set()
     if n >= 10:
