@@ -1,5 +1,5 @@
 import array
-
+import math
 # Sieve of Eratosthenes
 
 
@@ -134,6 +134,7 @@ def is_palindrome(x):
     """
     return str(x) == str(x)[::-1]
 
+
 def get_rotations(n):
     """
     Returns a set of integer permutations on int n.
@@ -154,6 +155,16 @@ def get_rotations(n):
             digits = digits[-1:] + digits[:-1]
             rots.add(int(digits[:]))
     return rots
+
+
+def binomial_coefficient(n, k):
+    """
+    from n positions choose k
+    >>> binomial_coefficient(4,2)
+    6
+    """
+    return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+
 
 if __name__ == "__main__":
     import doctest

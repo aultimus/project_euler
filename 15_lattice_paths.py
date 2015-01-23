@@ -1,7 +1,7 @@
 # https://projecteuler.net/problem=15
-# Starting in the top left corner of a 2×2 grid, and only being able to move to
+# Starting in the top left corner of a 2x2 grid, and only being able to move to
 # the right and down, there are exactly 6 routes to the bottom right corner.
-# How many such routes are there through a 20×20 grid?
+# How many such routes are there through a 20x20 grid?
 
 # Take the 2x2 grid, we can only move down twice and right twice.
 # So we have four moves, each either being right or down.
@@ -17,13 +17,7 @@
 # has n 0s and n 1s. Online research points to the binomial coefficient.
 
 # http://en.wikipedia.org/wiki/Binomial_coefficient#Binomial_coefficient_in_programming_languages
-from math import factorial
-def binomialCoefficient(n, k):
-    """
-    from n positions choose k
-    >>> binomialCoefficient(4,2)
-    6
-    """
-    return factorial(n) // (factorial(k) * factorial(n - k))
+import utils
 
-print binomialCoefficient(40,20)
+
+print utils.binomial_coefficient(40, 20)
