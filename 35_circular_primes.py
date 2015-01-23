@@ -9,12 +9,7 @@
 
 import utils
 
+
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-    count = 0
     primes = set([p for p in utils.sieveOfEratosthenes(1000000)])
-    for p in primes:
-        if all(r in primes for r in utils.get_rotations(p)):
-            count += 1
-    print count
+    print len([p for p in primes if utils.get_rotations(p).issubset(primes)])
