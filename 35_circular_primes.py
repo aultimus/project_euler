@@ -31,7 +31,7 @@ if __name__ == "__main__":
     import doctest
     doctest.testmod()
     count = 0
-    primes = [p for p in utils.sieveOfEratosthenes(1000000)]
+    primes = set([p for p in utils.sieveOfEratosthenes(1000000)])
     for p in primes:
         if all(r in primes for r in get_rotations(p)):
             count += 1
