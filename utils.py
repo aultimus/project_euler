@@ -162,6 +162,10 @@ def binomial_coefficient(n, k):
     from n positions choose k
     >>> binomial_coefficient(4,2)
     6
+    >>> binomial_coefficient(5,3)
+    10
+    >>> binomial_coefficient(23,10)
+    1144066L
     """
     return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
 
