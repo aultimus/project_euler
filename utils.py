@@ -134,6 +134,22 @@ def is_palindrome(x):
     """
     return str(x) == str(x)[::-1]
 
+def get_rotations(n):
+    """
+    >>> r = get_rotations(197)
+    >>> r == {971, 719}
+    True
+    >>> r = get_rotations(15)
+    >>> r == {51}
+    True
+    """
+    rots = set()
+    if n >= 10:
+        digits = str(n)
+        for i in xrange(1, len(digits)):
+            digits = digits[-1:] + digits[:-1]
+            rots.add(int(digits[:]))
+    return rots
 
 if __name__ == "__main__":
     import doctest
