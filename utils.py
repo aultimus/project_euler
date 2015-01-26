@@ -1,4 +1,5 @@
 import array
+import itertools
 import math
 # Sieve of Eratosthenes
 
@@ -169,6 +170,13 @@ def binomial_coefficient(n, k):
     """
     return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
 
+
+def gen_pandigital_strings(digits):
+    """
+    >>> gen_pandigital_strings("123")
+    ['123', '132', '213', '231', '312', '321']
+    """
+    return ["".join(p) for p in itertools.permutations(digits)]
 
 if __name__ == "__main__":
     import doctest
