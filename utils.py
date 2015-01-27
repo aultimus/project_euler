@@ -1,14 +1,17 @@
 import array
 import itertools
 import math
-# Sieve of Eratosthenes
 
+primes_to_114 = [2, 3, 5,7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,  53,
+                59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
 
+# Note: Generates primes upto but not including c
+# Generator version - yields prime ints
 def sieveOfEratosthenes(c):
     """
     Generates prime numbers using sieve of Eratosthenes algorithm
     1. Create a list of consecutive integers from 2 through
-        n: (2, 3, 4, ..., n).
+        n-1: (2, 3, 4, ..., n-1).
     2. Initially, let p equal 2, the first prime number.
     3. Starting from p, enumerate its multiples by counting to n in increments
         of p, and mark them in the list (these will be 2p, 3p, 4p, etc.;
@@ -19,11 +22,10 @@ def sieveOfEratosthenes(c):
 
     arg c: upper limit on prime numbers you want to generate
 
-    >>> r = [p for p in sieveOfEratosthenes(114)]
-    >>> r == [2, 3, 5,7, 11, 13, 17, 19, 23, 29,
-    ... 31, 37, 41, 43, 47,  53,  59,  61,  67,  71,
-    ... 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
+    >>> [p for p in sieveOfEratosthenes(114)] == primes_to_114
     True
+    >>> [p for p in sieveOfEratosthenes(11)]
+    [2, 3, 5, 7]
     """
     def mark(x):
         for i in xrange(x * 2, len(n), x):
@@ -40,11 +42,8 @@ def sieveOfEratosthenes(c):
 # More efficient yet less user friendly version, returns byte array
 def sieve_byte_array(c):
     """
-    >>> primes = [2, 3, 5,7, 11, 13, 17, 19, 23, 29,
-    ... 31, 37, 41, 43, 47,  53,  59,  61,  67,  71,
-    ... 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
     >>> r = sieve_byte_array(114)
-    >>> all(r[p] for p in primes)
+    >>> all(r[p] for p in primes_to_114)
     True
     """
     def mark(x):
@@ -64,10 +63,25 @@ def isPrime(n, cache=set()):
     """ brute force prime checker """
     if n in cache:
         return True
-    for i in xrange(2, n):
+    is_prime =  is_prime_cacheless(n)
+    cache[n] = is_prime
+    return is_prime
+
+
+
+def is_prime_cacheless(n):
+    """
+    >>> primes = [is_prime_cacheless(p) for p in xrange(114)]
+    >>> primes == [p in primes_to_114 for p in xrange(114)]
+    True
+
+    brute force prime checker
+    """
+    if n < 2:
+        return False
+    for i in xrange(2, int(math.sqrt(n)) + 1):
         if n % i == 0:
             return False
-    cache.add(n)
     return True
 
 
