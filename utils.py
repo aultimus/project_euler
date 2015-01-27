@@ -1,6 +1,7 @@
 import array
 import itertools
 import math
+import operator
 
 primes_to_114 = [2, 3, 5,7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,  53,
                 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
@@ -209,10 +210,17 @@ def binomial_coefficient(n, k):
 
 def gen_pandigital_strings(digits):
     """
-    >>> gen_pandigital_strings("123")
+    >>> [p for p in gen_pandigital_strings("123")]
     ['123', '132', '213', '231', '312', '321']
+    >>> s = "12345"
+    >>> len([p for p in gen_pandigital_strings(s)]) == reduce(operator.mul, [int(x) for x in s])
+    True
+    >>> s = "123456789"
+    >>> len([p for p in gen_pandigital_strings(s)]) == reduce(operator.mul, [int(x) for x in s])
+    True
     """
-    return ["".join(p) for p in itertools.permutations(digits)]
+    for p in itertools.permutations(digits):
+        yield "".join(p)
 
 if __name__ == "__main__":
     import doctest
