@@ -37,6 +37,28 @@ def sieveOfEratosthenes(c):
             yield p
             mark(p)
 
+# More efficient yet less user friendly version, returns byte array
+def sieve_byte_array(c):
+    """
+    >>> primes = [2, 3, 5,7, 11, 13, 17, 19, 23, 29,
+    ... 31, 37, 41, 43, 47,  53,  59,  61,  67,  71,
+    ... 73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
+    >>> r = sieve_byte_array(114)
+    >>> all(r[p] for p in primes)
+    True
+    """
+    def mark(x):
+        for i in xrange(x * 2, len(n), x):
+            n[i] = 0
+    n = array.array('B', [1 for i in xrange(c)])
+    p = 0
+    marked = False
+    for i in xrange(2, c):
+        if n[i] and i > p:
+            p = i
+            mark(p)
+    return n
+
 
 def isPrime(n, cache=set()):
     """ brute force prime checker """
