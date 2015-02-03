@@ -222,6 +222,23 @@ def gen_pandigital_strings(digits):
     for p in itertools.permutations(digits):
         yield "".join(p)
 
+
+def pentagonal_number(n):
+    """
+    >>> [pentagonal_number(x) for x in xrange(1, 11)]
+    [1, 5, 12, 22, 35, 51, 70, 92, 117, 145]
+    """
+    return n * (3 * n - 1) / 2
+
+
+def triangle_number(n):
+    """
+    >>> [triangle_number(n) for n in xrange(1,11)]
+    [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
+    """
+    return int((float(n) / 2) * (n + 1))
+
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()

@@ -1,15 +1,7 @@
 import doctest
+import utils
 
-
-def triangle_number(n):
-    """
-    >>> [triangle_number(n) for n in xrange(1,11)]
-    [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
-    """
-    return int((float(n) / 2) * (n + 1))
-
-
-t_nums = set([triangle_number(x) for x in xrange(1, 1000)])
+t_nums = set([utils.triangle_number(x) for x in xrange(1, 1000)])
 
 
 def is_triangle_word(s):

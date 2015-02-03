@@ -13,25 +13,19 @@
 # value of D?
 
 import doctest
-
-
-def pentagonal_number(n):
-    """
-    >>> [pentagonal_number(x) for x in xrange(1, 11)]
-    [1, 5, 12, 22, 35, 51, 70, 92, 117, 145]
-    """
-    return n * (3 * n - 1) / 2
+import utils
 
 doctest.testmod()
 
 limit = 10000  # limit in our search for pentagonal nums to prevent hangs
 
-p = [pentagonal_number(n) for n in xrange(1, limit)]
+p = [utils.pentagonal_number(n) for n in xrange(1, limit)]
 p_set = set(p)  # for fast lookups
 
 # p_k > p_j as p_k - p_j must be pentagonal ie. positive
 print min([p[k] - p[j] for k in xrange(0, len(p)) for j in xrange(0, k)
            if p[k] + p[j] in p_set and p[k] - p[j] in p_set])
+
 
 # the long way:
 # d = 100000000  # our smallest pentagonal difference
