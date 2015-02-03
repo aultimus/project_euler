@@ -1,5 +1,7 @@
 import doctest
 import time
+import array
+
 
 def square_sum_of_digits(n):
     """
@@ -14,23 +16,33 @@ def square_sum_of_digits(n):
     >>> square_sum_of_digits(1)
     1
     """
-    return sum([int(d) ** 2 for d in str(n)])
+    result = 0
+    while n:
+        result += (n % 10) * (n % 10)
+        n /= 10
+    return result
+
+
+def is_eighty_niner(n):
+    while n > 1:
+        if n == 89:
+            return True
+        n = square_sum_of_digits(n)
+    return False
+
 
 doctest.testmod()
 
 start = time.time()
-eighty_niners = set()
-for i in xrange(2, 10000000):
-    if not i % 100000:
-        print i
-    n = i
-    chain = []
-    while n != 1:
-        chain.append(n)
-        if n in eighty_niners or n == 89:
-            eighty_niners.update(chain)
-            break
-        n = square_sum_of_digits(n)
 
-print len([x for x in eighty_niners if x < 10000000])
+# This is the highest possible value in the chain
+assert(square_sum_of_digits(9999999) == 567)
+eighty_niners = array.array('B', [is_eighty_niner(i) for i in xrange(567 + 1)])
+
+count = 0
+for i in xrange(2, 10000000):
+    if eighty_niners[square_sum_of_digits(i)]:
+        count += 1
+
+print count
 print "seconds taken:", time.time() - start
