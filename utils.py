@@ -239,6 +239,13 @@ def triangle_number(n):
     return int((float(n) / 2) * (n + 1))
 
 
+def hexagonal_number(n):
+    """
+    >>> [hexagonal_number(n) for n in xrange(1,6)]
+    [1, 6, 15, 28, 45]
+    """
+    return n * (2 * n - 1)
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
