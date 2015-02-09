@@ -60,7 +60,7 @@ def sieve_byte_array(c):
     return n
 
 
-def isPrime(n, cache=set()):
+def isPrime(n, cache=dict()):
     """ brute force prime checker """
     if n in cache:
         return True
