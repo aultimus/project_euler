@@ -1,7 +1,4 @@
-import doctest
-
 # Optimisation: Use more memory efficient data structure than string
-
 
 def gen_all_n_length_bitsrings(n):
     """
@@ -35,11 +32,15 @@ def take_path(data, directions):
     # print vals
     return sum(vals)
 
-doctest.testmod()
+def main():
+    with open("18_max_path_sum_i_data.txt") as f:
+        data = [[int(x) for x in line.strip().split()]
+                for line in f.readlines() if line]
 
-with open("18_max_path_sum_i_data.txt") as f:
-    data = [[int(x) for x in line.strip().split()]
-            for line in f.readlines() if line]
+    # Brute force approach
+    return max([take_path(data, p) for p in gen_all_n_length_bitsrings(len(data) - 1)])
 
-# Brute force approach
-print max([take_path(data, p) for p in gen_all_n_length_bitsrings(len(data) - 1)])
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

@@ -29,6 +29,8 @@ d = np.matrix([
 [20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54],
 [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]])
 
+l = 20  # dims - could calc I guess
+n = 4   # length to match
 
 def getMaxProdOfDiags(matrix):
     lm = 0
@@ -39,27 +41,29 @@ def getMaxProdOfDiags(matrix):
             lm = max(p, lm)
     return lm
 
-l = 20  # dims - could calc I guess
-n = 4   # length to match
-m = 0   # biggest product
+def main():
+    m = 0   # biggest product
 
-# Horizontal
-for y in xrange(l):
-    for x in xrange(l-n+1):
-        p = np.prod(d[y, x:x + n])
-        m = max(p, m)
+    # Horizontal
+    for y in xrange(l):
+        for x in xrange(l-n+1):
+            p = np.prod(d[y, x:x + n])
+            m = max(p, m)
 
-# Vertical
-for x in xrange(l):
-    for y in xrange(l-n+1):
-        p = np.prod(d[y:y+4, x])
-        m = max(p, m)
+    # Vertical
+    for x in xrange(l):
+        for y in xrange(l-n+1):
+            p = np.prod(d[y:y+4, x])
+            m = max(p, m)
 
-# Diagonal left to right
-m = max(getMaxProdOfDiags(d), m)
+    # Diagonal left to right
+    m = max(getMaxProdOfDiags(d), m)
 
-# Diagonal right to left
-f = np.fliplr(d)
-m = max(getMaxProdOfDiags(f), m)
+    # Diagonal right to left
+    f = np.fliplr(d)
+    m = max(getMaxProdOfDiags(f), m)
 
-print m
+    return m
+
+if __name__ == "__main__":
+    print main()

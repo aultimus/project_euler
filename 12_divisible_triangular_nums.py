@@ -16,7 +16,7 @@
 # We can see that 28 is the first triangle number to have over five divisors.
 # What is the value of the first triangle number to have over
 # five hundred divisors?
-import doctest
+
 import math
 import utils
 
@@ -45,14 +45,17 @@ def gen_triangle_number(n, cache={}):
         cache[n] = t
     return t
 
-doctest.testmod()
+def main():
+    for i in xrange(1, 1000000):
+        t = gen_triangle_number(i)
+        f = utils.factorise(t)
+        if not (i % 100):
+            print i, len(f) # Progress display
+        if len(f) > 500:
+            return t
+            break
 
-
-for i in xrange(1, 1000000):
-    t = gen_triangle_number(i)
-    f = utils.factorise(t)
-    if not (i % 100):
-        print i, len(f) # Progress display
-    if len(f) > 500:
-        print "result", t
-        break
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

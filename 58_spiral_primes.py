@@ -1,4 +1,3 @@
-import doctest
 import utils
 
 max_dim = 50000
@@ -13,7 +12,7 @@ def prime_percentage(dim, num_primes):
 
 def spiral_num_diag_primes(dim, num_primes_in_prev):
     """
-    >>> spiral_num_diag_primes(7, 5, primes)
+    >>> spiral_num_diag_primes(7, 5)
     8
     """
     num_primes = 0
@@ -26,16 +25,18 @@ def spiral_num_diag_primes(dim, num_primes_in_prev):
         x = x - n
     return num_primes + num_primes_in_prev
 
+def main():
+    num_primes = 5      # when dim = 5
+    for dim in xrange(7, max_dim, 2):
+        num_primes = spiral_num_diag_primes(dim, num_primes)
+        percentage = prime_percentage(dim, num_primes)
+        if percentage < 10:
+            return dim
+            break
+        elif not dim % 7:
+            print dim, percentage
 
-doctest.testmod()
-
-
-num_primes = 5      # when dim = 5
-for dim in xrange(7, max_dim, 2):
-    num_primes = spiral_num_diag_primes(dim, num_primes)
-    percentage = prime_percentage(dim, num_primes)
-    if percentage < 10:
-        print "result", dim, percentage
-        break
-    elif not dim % 7:
-        print dim, percentage
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

@@ -5,8 +5,6 @@
 # Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x,
 # contain the same digits.
 
-import doctest
-
 
 def make_digits_list(x):
     """
@@ -17,8 +15,6 @@ def make_digits_list(x):
     digits.sort()
     return digits
 
-doctest.testmod()
-
 
 def has_permuted_multiples(x):
     digits = make_digits_list(x)
@@ -27,7 +23,14 @@ def has_permuted_multiples(x):
             return False
     return True
 
-for x in xrange(1, 10000000000):
-    if has_permuted_multiples(x):
-        print x
-        break
+
+def main():
+    for x in xrange(1, 10000000000):
+        if has_permuted_multiples(x):
+            return x
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

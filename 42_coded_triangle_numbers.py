@@ -23,11 +23,14 @@ def word_triangle_value(word):
     base = ord("a") - 1
     return sum([ord(c) - base for c in word])
 
+def main():
+    with open("p042_words.txt") as f:
+        words = [word.lower().strip('"') for word in f.read().split(",")]
 
-doctest.testmod()
+    t_words = [word for word in words if is_triangle_word(word)]
+    return len(t_words)
 
-with open("p042_words.txt") as f:
-    words = [word.lower().strip('"') for word in f.read().split(",")]
-
-t_words = [word for word in words if is_triangle_word(word)]
-print len(t_words)
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

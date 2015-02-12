@@ -1,8 +1,5 @@
 # https://projecteuler.net/problem=63
 
-import doctest
-
-
 def gen_n_powers(n):
     """
     Generate all n-digit positve integers that are also a power of n
@@ -22,9 +19,13 @@ def gen_n_powers(n):
             return l
         i += 1
 
-doctest.testmod()
+def main():
+    count = 0
+    for i in xrange(1, 1001):
+        count += len(gen_n_powers(i))
+    return count
 
-count = 0
-for i in xrange(1, 1001):
-    count += len(gen_n_powers(i))
-print count
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

@@ -27,10 +27,14 @@ def collatz(n):
             n = 3 * n + 1
     return count
 
-m = 0  # max collatz chain size so far
-n = 0  # start of max collatz chain so far
-for i in xrange(1, 1000001):
-    t = collatz(i)
-    if t > m:
-        n, m = i, t
-print n
+def main():
+    m = 0  # max collatz chain size so far
+    n = 0  # start of max collatz chain so far
+    for i in xrange(1, 1000001):
+        t = collatz(i)
+        if t > m:
+            n, m = i, t
+    return n
+
+if __name__ == "__main__":
+    print main()

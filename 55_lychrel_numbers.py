@@ -30,7 +30,6 @@
 # NOTE: Wording was modified slightly on 24 April 2007 to emphasise the
 # theoretical nature of Lychrel numbers.
 
-import doctest
 import utils
 
 
@@ -42,17 +41,22 @@ def reverse_and_add(x):
     return x + utils.reverse_int(x)
 
 
-doctest.testmod()
+def main():
+    # examine 1-> 10,000
+    lychrels = range(1, 10001)
+    for i in xrange(1, 10001):
+        # Fifty iterations per number to try and prove it is non-lychrel
+        r = reverse_and_add(i)
+        for j in xrange(0, 50):
+            if utils.is_palindrome(r):
+                # print "%s is a palindrome of %s on iteration %d" % (r, i, j)
+                lychrels.remove(i)
+                break
+            r = reverse_and_add(r)
+    return len(lychrels)
 
-# examine 1-> 10,000
-lychrels = range(1, 10001)
-for i in xrange(1, 10001):
-    # Fifty iterations per number to try and prove it is non-lychrel
-    r = reverse_and_add(i)
-    for j in xrange(0, 50):
-        if utils.is_palindrome(r):
-            # print "%s is a palindrome of %s on iteration %d" % (r, i, j)
-            lychrels.remove(i)
-            break
-        r = reverse_and_add(r)
-print len(lychrels)
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()
+

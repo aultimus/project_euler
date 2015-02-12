@@ -9,7 +9,10 @@
 
 import utils
 
+def main():
+    primes = set([p for p in utils.sieveOfEratosthenes(1000000)])
+    return len([p for p in primes if utils.get_rotations(p).issubset(primes)])
+
 
 if __name__ == "__main__":
-    primes = set([p for p in utils.sieveOfEratosthenes(1000000)])
-    print len([p for p in primes if utils.get_rotations(p).issubset(primes)])
+    print main()

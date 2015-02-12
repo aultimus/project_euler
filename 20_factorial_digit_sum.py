@@ -8,7 +8,11 @@
 
 import math
 
-x = math.factorial(100)
-l = list(str(x))
+def main():
+    x = math.factorial(100)
+    l = list(str(x))
 
-print sum([int(i) for i in l])
+    return sum([int(i) for i in l])
+
+if __name__ == "__main__":
+    print main()

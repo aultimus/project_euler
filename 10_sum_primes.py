@@ -4,7 +4,11 @@
 
 from utils import sieveOfEratosthenes
 
-n = 0
-for prime in sieveOfEratosthenes(2000000):
-    n += prime
-print n
+def main():
+    n = 0
+    for prime in sieveOfEratosthenes(2000000):
+        n += prime
+    return n
+
+if __name__ == "__main__":
+    print main()

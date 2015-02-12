@@ -1,5 +1,3 @@
-import doctest
-import time
 import array
 
 
@@ -31,18 +29,23 @@ def is_eighty_niner(n):
     return False
 
 
-doctest.testmod()
+def main():
+    # This is the highest possible value in the chain
+    assert(square_sum_of_digits(9999999) == 567)
+    eighty_niners = array.array('B', [is_eighty_niner(i) for i in xrange(567 + 1)])
 
-start = time.time()
+    count = 0
+    for i in xrange(2, 10000000):
+        if eighty_niners[square_sum_of_digits(i)]:
+            count += 1
 
-# This is the highest possible value in the chain
-assert(square_sum_of_digits(9999999) == 567)
-eighty_niners = array.array('B', [is_eighty_niner(i) for i in xrange(567 + 1)])
+    return count
 
-count = 0
-for i in xrange(2, 10000000):
-    if eighty_niners[square_sum_of_digits(i)]:
-        count += 1
 
-print count
-print "seconds taken:", time.time() - start
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    import time
+    start = time.time()
+    print main()
+    print "seconds taken:", time.time() - start

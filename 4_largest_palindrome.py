@@ -11,11 +11,15 @@ def isPalindrome(s):
             return False
     return True
 
-vals = []
-for i in xrange(100, 1000):
-    for j in xrange(100, 1000):
-        n = i * j
-        s = str(n)
-        if isPalindrome(s):
-            vals.append(n)
-print max(vals)
+def main():
+    vals = []
+    for i in xrange(100, 1000):
+        for j in xrange(100, 1000):
+            n = i * j
+            s = str(n)
+            if isPalindrome(s):
+                vals.append(n)
+    return max(vals)
+
+if __name__ == "__main__":
+    print main()

@@ -14,10 +14,15 @@
 # Find the sum of all the numbers that can be written as the sum of
 # fifth powers of their digits.
 
-l = []
-for i in xrange(2, 1000000):
-    digits = list(str(i))
-    s = sum([int(d) ** 5 for d in digits])
-    if s == i:
-        l.append(i)
-print sum(l)
+def main():
+    l = []
+    for i in xrange(2, 1000000):
+        digits = list(str(i))
+        s = sum([int(d) ** 5 for d in digits])
+        if s == i:
+            l.append(i)
+    return sum(l)
+
+
+if __name__ == "__main__":
+   print main()

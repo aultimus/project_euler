@@ -4,9 +4,12 @@
 
 import utils
 
-count = 0
-for prime in utils.sieveOfEratosthenes(1000000):
-    count += 1
-    if count == 10001:
-        print prime
-        break
+def main():
+    count = 0
+    for prime in utils.sieveOfEratosthenes(1000000):
+        count += 1
+        if count == 10001:
+            return prime
+
+if __name__ == "__main__":
+    print main()

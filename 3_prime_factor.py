@@ -4,6 +4,10 @@
 
 # Not enough RAM to run sieve of erastosthenes for such a large num
 import utils
-num = 600851475143
 
-print max([p for p in utils.factorise(num) if utils.is_prime(p)])
+def main():
+    num = 600851475143
+    return max([p for p in utils.factorise(num) if utils.is_prime(p)])
+
+if __name__ == "__main__":
+    print main()

@@ -10,7 +10,6 @@
 #
 # Evaluate the sum of all the amicable numbers under 10000.
 
-import doctest
 import utils
 
 
@@ -23,17 +22,21 @@ def are_amicable(a, b):
         return False
     return (utils.sum_of_proper_divisors(a) == b and utils.sum_of_proper_divisors(b) == a)
 
-doctest.testmod()
+def main():
+    l = set()
+    amicable_total = 0
+    for a in xrange(1, 10001):
+        if not a % 500:
+            print a
+        # doing this calc twice, could cache or pass in
+        b = utils.sum_of_proper_divisors(a)
+        if are_amicable(a, b):
+            l.add(a)
+            l.add(b)
+    print l
+    return sum(l)
 
-l = set()
-amicable_total = 0
-for a in xrange(1, 10001):
-    if not a % 500:
-        print a
-    # doing this calc twice, could cache or pass in
-    b = utils.sum_of_proper_divisors(a)
-    if are_amicable(a, b):
-        l.add(a)
-        l.add(b)
-print l
-print "result", sum(l)
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

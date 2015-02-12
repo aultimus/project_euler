@@ -20,30 +20,35 @@ import datetime # datetime seems like cheating but makes it easier, why not
 
 def is_sunday(d):
     """
-    >>>is_sunday(datetime(1900, 1, 8))
+    >>> is_sunday(datetime.date(1900, 1, 7))
     True
     """
     return d.isoweekday() == 7
 
-# 01/01/1901 -> 31/12/2000
-# Bruteforce approach
-sunday_count = 0
-date = datetime.date(1901,1,1)
-while date.year < 2001:
-    if is_sunday(date) and date.day == 1:
-        sunday_count += 1
-    date += datetime.timedelta(days=1)
+def main():
+    # 01/01/1901 -> 31/12/2000
+    # Bruteforce approach
+    sunday_count = 0
+    date = datetime.date(1901,1,1)
+    while date.year < 2001:
+        if is_sunday(date) and date.day == 1:
+            sunday_count += 1
+        date += datetime.timedelta(days=1)
 
-print sunday_count
+    return sunday_count
 
+    # I wonder why this doesn't work:
+    # sunday_count = 0
+    # for y in xrange(1900, 2001):
+    #     for m in xrange(1, 13):
+    #         d = datetime.date(y, m, 1)
+    #         s = is_sunday(d)
+    #         if s:
+    #             print d
+    #             sunday_count += 1
+    # return sunday_count
 
-# I wonder why this doesn't work:
-# sunday_count = 0
-# for y in xrange(1900, 2001):
-#     for m in xrange(1, 13):
-#         d = datetime.date(y, m, 1)
-#         s = is_sunday(d)
-#         if s:
-#             print d
-#             sunday_count += 1
-# print sunday_count
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

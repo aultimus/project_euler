@@ -1,6 +1,5 @@
 # https://projecteuler.net/problem=50
 
-import doctest
 import utils
 
 
@@ -25,6 +24,10 @@ def longest_consec_prime_sum_below_n(n):
                 max_prime_run = prime_run
     return sum(max_prime_run)
 
-doctest.testmod()
+def main():
+    return longest_consec_prime_sum_below_n(1000000)
 
-print longest_consec_prime_sum_below_n(1000000)
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

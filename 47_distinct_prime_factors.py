@@ -1,6 +1,5 @@
 # http://projecteuler.net/problem=47
 
-import doctest
 import time
 import utils
 
@@ -22,24 +21,30 @@ def get_prime_factors_list(x, primes):
     f_list = utils.factorise(x)
     return [f for f in f_list if f in primes]
 
-doctest.testmod()
-start = time.time()
+def main():
+    start = time.time()
+    result = 0
+    limit = 200000
+    num_prime_facs = 4
+    primes = set([p for p in utils.sieveOfEratosthenes(limit)])
+    count = 0
 
-limit = 200000
-num_prime_facs = 4
-primes = set([p for p in utils.sieveOfEratosthenes(limit)])
-count = 0
+    for i in xrange(1, limit):
+        if not i % 1000:
+            print i
+        p_facs = get_prime_factors_list(i, primes)
+        if len(p_facs) >= num_prime_facs:
+            count += 1
+        else:
+            count = 0
 
-for i in xrange(1, limit):
-    if not i % 1000:
-        print i
-    p_facs = get_prime_factors_list(i, primes)
-    if len(p_facs) >= num_prime_facs:
-        count += 1
-    else:
-        count = 0
+        if count == num_prime_facs:
+            result = i - (num_prime_facs - 1)
+            break
+    print "wall-clock time taken: %d" % (time.time() - start)
+    return result
 
-    if count == num_prime_facs:
-        print "result: %d" % (i - (num_prime_facs - 1))
-        break
-print "wall-clock time taken: %d" % (time.time() - start)
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

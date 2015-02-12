@@ -11,13 +11,19 @@
 #
 # What is the total of all the name scores in the file?
 
+
 alphaStart = ord("A") - 1
 
 
 def score(s, pos):
     return sum([ord(c) - alphaStart for c in s]) * pos
 
-nameData = open("names.txt").readline().split(",")
-names = sorted([name.strip('"') for name in nameData])
+def main():
+    nameData = open("names.txt").readline().split(",")
+    names = sorted([name.strip('"') for name in nameData])
+    return sum([score(name, i + 1) for i, name in enumerate(names)])
 
-print sum([score(name, i + 1) for i, name in enumerate(names)])
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

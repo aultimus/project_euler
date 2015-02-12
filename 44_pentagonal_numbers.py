@@ -12,19 +12,17 @@
 # difference are pentagonal and D = |Pk - Pj| is minimised; what is the
 # value of D?
 
-import doctest
 import utils
-
-doctest.testmod()
 
 limit = 10000  # limit in our search for pentagonal nums to prevent hangs
 
-p = [utils.pentagonal_number(n) for n in xrange(1, limit)]
-p_set = set(p)  # for fast lookups
+def main():
+    p = [utils.pentagonal_number(n) for n in xrange(1, limit)]
+    p_set = set(p)  # for fast lookups
 
-# p_k > p_j as p_k - p_j must be pentagonal ie. positive
-print min([p[k] - p[j] for k in xrange(0, len(p)) for j in xrange(0, k)
-           if p[k] + p[j] in p_set and p[k] - p[j] in p_set])
+    # p_k > p_j as p_k - p_j must be pentagonal ie. positive
+    return min([p[k] - p[j] for k in xrange(0, len(p)) for j in xrange(0, k)
+               if p[k] + p[j] in p_set and p[k] - p[j] in p_set])
 
 
 # the long way:
@@ -44,3 +42,7 @@ print min([p[k] - p[j] for k in xrange(0, len(p)) for j in xrange(0, k)
 #                 d = diff
 #                 print("p_j %d and p_k %d produce smallest diff so far: %d"
 #                     % (p_j, p_k, d))
+
+
+if __name__ == "__main__":
+    print main()

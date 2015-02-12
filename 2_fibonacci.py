@@ -15,5 +15,10 @@ def fib(x, y):
             total += n
         fib(y, n)
 
-fib(1, 2)
-print total
+def main():
+    fib(1, 2)
+    return total
+
+
+if __name__ == "__main__":
+    print main()

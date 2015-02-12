@@ -26,13 +26,16 @@ def getTruncations(n):
         r.add(int(s[-i:]))
     return r
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-
+def main():
     total = 0
     primes = [p for p in sieveOfEratosthenes(1000000)]
     for p in primes:
         if p > 9 and all(t in primes for t in getTruncations(p)):
             total += p
-    print total
+    return total
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

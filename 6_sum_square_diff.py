@@ -8,15 +8,19 @@
 # Find the difference between the sum of the squares of the first one hundred
 # natural numbers and the square of the sum.
 
-# sum of squares
-n = 0
-for i in xrange(0, 101):
-    n += i ** 2
+def main():
+    # sum of squares
+    n = 0
+    for i in xrange(0, 101):
+        n += i ** 2
 
-# square of sum
-m = 0
-for i in xrange(1, 101):
-    m += i
-m = m ** 2
+    # square of sum
+    m = 0
+    for i in xrange(1, 101):
+        m += i
+    m = m ** 2
 
-print m - n
+    return m - n
+
+if __name__ == "__main__":
+    print main()

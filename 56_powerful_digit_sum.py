@@ -1,6 +1,3 @@
-import doctest
-
-
 def digit_sum(n):
     """
     >>> digit_sum(100**100)
@@ -10,6 +7,13 @@ def digit_sum(n):
     """
     return sum(int(x) for x in list(str(n)))
 
-doctest.testmod()
 
-print max([digit_sum(a ** b) for a in xrange(1, 100) for b in xrange(1, 100)])
+def main():
+        return max([digit_sum(a ** b) for a in xrange(1, 100)
+                    for b in xrange(1, 100)])
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

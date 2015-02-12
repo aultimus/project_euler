@@ -2,7 +2,6 @@
 # Find the greatest product of five consecutive digits in the 1000-digit
 # number.
 
-import doctest
 from operator import mul
 
 s = "\
@@ -45,5 +44,10 @@ def max_adj_product(n, s):
             m = x
     return m
 
-doctest.testmod()
-print max_adj_product(13, s)
+def main():
+    return max_adj_product(13, s)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

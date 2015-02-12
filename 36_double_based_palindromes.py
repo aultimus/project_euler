@@ -5,7 +5,6 @@
 # (Please note that the palindromic number, in either base, may not include
 # leading zeros.)
 
-import doctest
 import utils
 
 
@@ -34,6 +33,11 @@ def is_palindrome_in_dec_and_bin(x):
     """
     return is_palindrome_in_decimal(x) and is_palindrome_in_binary(x)
 
-doctest.testmod()
 
-print sum([i for i in xrange(1, 1000000) if is_palindrome_in_dec_and_bin(i)])
+def main():
+    return sum([i for i in xrange(1, 1000000) if is_palindrome_in_dec_and_bin(i)])
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

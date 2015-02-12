@@ -19,5 +19,8 @@
 # http://en.wikipedia.org/wiki/Binomial_coefficient#Binomial_coefficient_in_programming_languages
 import utils
 
+def main():
+    return utils.binomial_coefficient(40, 20)
 
-print utils.binomial_coefficient(40, 20)
+if __name__ == "__main__":
+    print main()

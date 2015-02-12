@@ -21,6 +21,12 @@ def get_lexographical_permutations(n):
     for perm in itertools.permutations(n):
         yield ''.join(perm)
 
-for c, p in enumerate(get_lexographical_permutations("0123456789")):
-    if c == 1000000 - 1:  # counting from 0
-        print p
+def main():
+    for c, p in enumerate(get_lexographical_permutations("0123456789")):
+        if c == 1000000 - 1:  # counting from 0
+            return p
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

@@ -14,9 +14,6 @@
 # What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
 # formed in the same way?
 
-import doctest
-
-
 def sum_number_spiral(dim):
     """
     >>> sum_number_spiral(5)
@@ -33,5 +30,10 @@ def sum_number_spiral(dim):
         n -= 2
     return total + 1
 
-doctest.testmod()
-print sum_number_spiral(1001)
+def main():
+    return sum_number_spiral(1001)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

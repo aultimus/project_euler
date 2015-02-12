@@ -1,5 +1,4 @@
 # https://projecteuler.net/problem=29
-import doctest
 
 
 # Cannot for the life of me think of a good name for this function
@@ -16,7 +15,10 @@ def a_to_b_range(a_min, a_max, b_min, b_max):
     vals.sort()
     return vals
 
+def main():
+    return len(a_to_b_range(2, 100, 2, 100))
 
-doctest.testmod()
-
-print len(a_to_b_range(2, 100, 2, 100))
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

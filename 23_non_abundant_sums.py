@@ -17,7 +17,6 @@
 # Find the sum of all the positive integers which cannot be written as the sum
 # of two abundant numbers.
 
-import doctest
 import utils
 
 
@@ -28,9 +27,13 @@ def is_abundant(n):
     """
     return utils.sum_of_proper_divisors(n) > n
 
-doctest.testmod()
+def main():
+    ceiling = 28123
+    abundants = [n for n in xrange(1, ceiling) if is_abundant(n)]
+    abundant_sums = set([x + y for x in abundants for y in abundants])
+    return sum([x for x in xrange(1, ceiling) if x not in abundant_sums])
 
-ceiling = 28123
-abundants = [n for n in xrange(1, ceiling) if is_abundant(n)]
-abundant_sums = set([x + y for x in abundants for y in abundants])
-print sum([x for x in xrange(1, ceiling) if x not in abundant_sums])
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()

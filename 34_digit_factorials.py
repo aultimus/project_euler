@@ -6,10 +6,14 @@
 # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 import math
 
-l = []
-for i in xrange(30, 1000000):
-    digits = list(str(i))
-    s = sum(math.factorial(int(d)) for d in digits)
-    if i == s:
-        l.append(i)
-print sum(l)
+def main():
+    l = []
+    for i in xrange(30, 1000000):
+        digits = list(str(i))
+        s = sum(math.factorial(int(d)) for d in digits)
+        if i == s:
+            l.append(i)
+    return sum(l)
+
+if __name__ == "__main__":
+    print main()

@@ -14,12 +14,14 @@
 # How many, not necessarily distinct, values of  nCr, for 1 <= n <= 100, are greater than one-million?
 #
 
-
-# nCr when 1<= n <= 100
-# strictly: r <= n
-
 import utils
 
 
-print len([n for n in xrange(1,101) for r in xrange(1,n)
-            if utils.binomial_coefficient(n,r) > 1000000])
+def main():
+    # nCr when 1<= n <= 100
+    # strictly: r <= n
+    return len([n for n in xrange(1,101) for r in xrange(1,n)
+                if utils.binomial_coefficient(n,r) > 1000000])
+
+if __name__ == "__main__":
+    print main()

@@ -14,12 +14,16 @@ import num2word # https://pypi.python.org/pypi/num2words
 import re
 from collections import Counter
 
-l = []
-for i in xrange(1, 1001):
-    s = num2word.to_card(i)
-    l.extend(re.findall(r"[\w']+", s))
+def main():
+    l = []
+    for i in xrange(1, 1001):
+        s = num2word.to_card(i)
+        l.extend(re.findall(r"[\w']+", s))
 
-count = 0
-for word in l:
-    count += len(word)
-print count
+    count = 0
+    for word in l:
+        count += len(word)
+    return count
+
+if __name__ == "__main__":
+    print main()

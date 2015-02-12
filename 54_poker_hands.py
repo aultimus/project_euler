@@ -359,42 +359,47 @@ def p1_wins(i):
     print "p1 wins"
     return i + 1
 
-doctest.testmod()
+def main():
+    with open("p054_poker.txt") as f:
+        games = [line.strip("\n").split() for line in f.readlines()]
 
-with open("p054_poker.txt") as f:
-    games = [line.strip("\n").split() for line in f.readlines()]
-
-p1_win_count = 0
-for game in games:
-    p1 = Hand(game[:5])
-    p2 = Hand(game[5:])
-    # Unpack our ugly data structure - TODO - streamline this
-    (p1_hand_value, p1_hand_name), p1_aux_val = p1.val
-    (p2_hand_value, p2_hand_name), p2_aux_val = p2.val
-    print "\n", p1, p1_hand_name, "   ", p2, p2_hand_name
-    if p1_hand_value > p2_hand_value:
-        p1_win_count = p1_wins(p1_win_count)
-    elif p1_hand_value < p2_hand_value:
-        print "p2 wins"
-    else:
-        # we have equal hand types, check our aux info for more info on hand
-        # value. This tells us if we have a pair of eights or a pair of aces
-        # for example
-        if p1_aux_val > p2_aux_val:
+    p1_win_count = 0
+    for game in games:
+        p1 = Hand(game[:5])
+        p2 = Hand(game[5:])
+        # Unpack our ugly data structure - TODO - streamline this
+        (p1_hand_value, p1_hand_name), p1_aux_val = p1.val
+        (p2_hand_value, p2_hand_name), p2_aux_val = p2.val
+        print "\n", p1, p1_hand_name, "   ", p2, p2_hand_name
+        if p1_hand_value > p2_hand_value:
             p1_win_count = p1_wins(p1_win_count)
-        elif p1_aux_val < p2_aux_val:
+        elif p1_hand_value < p2_hand_value:
             print "p2 wins"
         else:
-            # OK, hands are a draw e.g. both have pairs of eights,
-            # compare highest cards in hand
-            p1_hi = p1.get_high_card_val()
-            p2_hi = p2.get_high_card_val()
-            if p1_hi > p2_hi:
+            # we have equal hand types, check our aux info for more info on hand
+            # value. This tells us if we have a pair of eights or a pair of aces
+            # for example
+            if p1_aux_val > p2_aux_val:
                 p1_win_count = p1_wins(p1_win_count)
-            elif p1_hi < p2_hi:
+            elif p1_aux_val < p2_aux_val:
                 print "p2 wins"
             else:
-                print "Stalemate"
-                raise UnimplementedException()
+                # OK, hands are a draw e.g. both have pairs of eights,
+                # compare highest cards in hand
+                p1_hi = p1.get_high_card_val()
+                p2_hi = p2.get_high_card_val()
+                if p1_hi > p2_hi:
+                    p1_win_count = p1_wins(p1_win_count)
+                elif p1_hi < p2_hi:
+                    print "p2 wins"
+                else:
+                    print "Stalemate"
+                    raise UnimplementedException()
 
-print "player one won", p1_win_count
+    return p1_win_count
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    print main()
+
