@@ -5,8 +5,7 @@
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-total = 0
-
+total = 2
 
 def fib(x, y):
     global total
@@ -16,6 +15,5 @@ def fib(x, y):
             total += n
         fib(y, n)
 
-total += 2
 fib(1, 2)
 print total
