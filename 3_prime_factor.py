@@ -3,9 +3,7 @@
 # What is the largest prime factor of the number 600851475143 ?
 
 # Not enough RAM to run sieve of erastosthenes for such a large num
-from utils import trialDivision
-
+import utils
 num = 600851475143
 
-for prime in trialDivision(num):
-    print prime
+print max([p for p in utils.factorise(num) if utils.is_prime(p)])

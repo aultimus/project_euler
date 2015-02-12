@@ -60,14 +60,13 @@ def sieve_byte_array(c):
     return n
 
 
-def isPrime(n, cache=dict()):
+def is_prime(n, cache=dict()):
     """ brute force prime checker """
     if n in cache:
         return True
     is_prime =  is_prime_cacheless(n)
     cache[n] = is_prime
     return is_prime
-
 
 
 def is_prime_cacheless(n):
@@ -84,13 +83,6 @@ def is_prime_cacheless(n):
         if n % i == 0:
             return False
     return True
-
-
-def trialDivision(n):
-    """ brute force prime factor finder """
-    for i in xrange(2, n):
-        if n % i == 0 and isPrime(i):
-            yield i
 
 
 def gcd(x, y):
