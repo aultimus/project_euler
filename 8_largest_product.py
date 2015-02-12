@@ -2,6 +2,7 @@
 # Find the greatest product of five consecutive digits in the 1000-digit
 # number.
 
+import doctest
 from operator import mul
 
 s = "\
@@ -27,10 +28,22 @@ s = "\
 71636269561882670428252483600823257530420752963450\
 "
 
-m = 0
-for i in xrange(len(s) - 4):
-    nums = [int(d) for d in s[i:i + 5]]
-    x = reduce(mul, nums)
-    if x > m:
-        m = x
-print m
+def max_adj_product(n, s):
+    """
+    Given:
+    n, number of digits
+    s, digit string
+    Find maximum adjacent product of n digits in s
+    >>> max_adj_product(4, s)
+    5832
+    """
+    m = 0
+    for i in xrange(len(s) - n - 1):
+        nums = [int(d) for d in s[i:i + n]]
+        x = reduce(mul, nums)
+        if x > m:
+            m = x
+    return m
+
+doctest.testmod()
+print max_adj_product(13, s)
