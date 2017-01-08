@@ -33,7 +33,6 @@ def sieveOfEratosthenes(c):
             n[i] = 0
     n = array.array('B', [1 for i in xrange(c)])
     p = 0
-    marked = False
     for i in xrange(2, c):
         if n[i] and i > p:
             p = i
